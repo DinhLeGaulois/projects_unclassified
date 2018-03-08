@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript: Composition de Fonction et Callback</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <style>
+    .codeDiv {
+      background-color: #d0d1d0;
+      width: 100%;
+      padding: 10px;
+      height: auto;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="panel panel-primary container">
+    <div class="panel-heading">
+      <h1 align="center">JavaScript: Composition de Fonction et Callback</h1>
+    </div>
+    <div class="panel-body">
+      <h2><font color="blue"><b>Composition de Fonctions - "Callback" Fonction</b></font></h2>
+      <p>En JavaScript, on peut créer une function puis de la passer à une autre (<font color="red"><b>SANS</b></font> les parenthèses), 
+        en tant que paramètre. On appelle la première fonction une "<b>callback function</b>". Généralement, on fait ce genre de 
+        manipulation en mode ASYNCHRONISE (<b>asyn</b>). Par exemple, lorsqu'on veuille traiter des données (afficher par exemple) mais 
+        on doit attendre d'avoir le résultat des maniputations qui prennent un certain temps avant d'arriver (d'une requête de la base de données
+        ou de l'ouverture d'un fichier, par exemple). Donc, pour renvoyer des résultats - lorsqu'ils sont arrivés - à une
+        fonction passée en paramètre, la fonction appelante n'a qu'à retourner la fonction appelée en lui donnant les résultats
+        en tant que paramètre (en ajoutant des PARENTHESES, on EXECUTE la fonction).
+      </p>
+      <br/>
+      <p align="center">
+        <img src="img/executionOuPas.jpg">
+      </p>
+      <br/>
+      <p>Voici un exemple de l'utilisation de "</b>callback</b>" fonction</p>
+      <br/>
+      <p align="center">
+        <img src="img/callbackFonction.jpg">
+      </p>
+
+      <br/><hr/><br/>
+      <h2><font color="blue"><b>Composition de Fonctions - Généralisation par exemple</b></font></h2><br/>
+      <p>Supposons qu'on ait plusieurs addresse dans le 16ème arrondissement. On peut faire, sans avoir rien d'autre à faire :</p>      
+      <div class="codeDiv">
+          <p>let adresse1 = du16emeArrDeParis("1 rue Renard");</p>
+          <p>let adresse2 = du16emeArrDeParis("25 rue du Loup");</p>
+          let adresse3 = du16emeArrDeParis("60 rue Elephant");
+      </div>
+      <br/>
+      <p align="center">
+        <img src="img/adresse.jpg">
+      </p>      
+    </div>
+  </div>
+</body>
+
+</html>

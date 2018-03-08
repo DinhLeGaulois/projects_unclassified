@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Java Tutorial</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		body{
+			background-color:black;
+			font-size:200%;
+		}
+    
+        td, th{ padding:10px; }
+
+        .part{
+            background-color:black;
+            color:cyan;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight:bold;
+			font-size:150%;
+        }
+        
+        .def{
+            background-color:#2c2d19;
+            color:white;
+            padding:20px;
+            margin:10px;
+            border-radius:20px;
+        }        
+
+        .code{
+            background-color:#355367;
+            font-weight:bold;
+            color:white;
+            padding:20px;
+            margin:30px;
+            border-radius:20px;
+        }
+
+        .mainPoint{
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        .panel{ margin:20px; }
+
+        .panel-body{ background-color: #e3ded1; }
+
+        .container{ width:95%; }
+	</style>
+</head>
+
+<body>
+<br/>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h1 align="center" id="tableOfContent">Java Tutorial</h1>
+            <h3 align="center">(Source: <a href="https://www.tutorialspoint.com/java/index.htm"><font color="blue">tutorialspoint</font></a>)</h3>
+        </div>
+        <div class="panel-body" style="text-align: center;">
+            <h2><a href="#java_basic_syntax">Basic Syntax</a></h2>
+            <h2><a href="#java_object_classes">Object &amp; Classes</a></h2>
+            <h2><a href="#java_basic_datatypes">Basic Datatypes</a></h2>
+            <h2><a href="#java_variable_types">Variable Types</a></h2>
+            <h2><a href="#java_modifier_types">Modifier Types</a></h2>
+            <h2><a href="#java_basic_operators">Basic Operators</a></h2>
+            <h2><a href="#java_loop_control">Loop Control</a></h2>
+            <h2><a href="#java_decision_making">Decision Making</a></h2>
+            <h2><a href="#java_numbers">Numbers</a></h2>
+            <h2><a href="#java_characters">Characters</a></h2>
+            <h2><a href="#java_strings">Strings</a></h2>
+            <h2><a href="#java_arrays">Arrays</a></h2>
+            <h2><a href="#java_date_time">Date &amp; Time</a></h2>
+            <h2><a href="#java_regular_expressions">Regular Expressions</a></h2>
+            <h2><a href="#java_methods">Methods</a></h2>
+            <h2><a href="#java_files_io">Files and I/O</a></h2>
+            <h2><a href="#java_exceptions">Exceptions</a></h2>
+            <h2><a href="#java_innerclasses">Inner classes</a></h2>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h1 align="center">Java Tutorial - Content</h1></div>
+        <div class="panel-body">
+            <span class="part" id="java_basic_syntax">Basic Syntax</span>  (source: <a href="https://www.tutorialspoint.com/java/java_basic_syntax.htm">tutorialspoint</a>)<br/><br/>
+            <p>When we consider a Java program, it can be defined as a collection of objects that communicate via invoking each other's methods. 
+                Let us now briefly look into what do class, object, methods, and instance variables mean.</p>
+
+            <ul>
+                <li><b>Object</b> - Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behavior such as 
+                    wagging their tail, barking, eating. An object is an instance of a class.</li>
+                <li><b>Class</b> - A class can be defined as a template/blueprint that describes the behavior/state that the object of its type supports.</li>
+                <li><b>Methods</b> - A method is basically a behavior. A class can contain many methods. It is in methods where the logics are written, 
+                    data is manipulated and all the actions are executed.</li>
+                <li><b>Instance Variables</b> - Each object has its unique set of instance variables. An object's state is created by the values assigned 
+                    to these instance variables.</li>
+            </ul>
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_object_classes">Object &amp; Classes</span>  (source: <a href="https://www.tutorialspoint.com/java/java_object_classes.htm">tutorialspoint</a>)<br/><br/>
+            <div class="def">
+                <p><b><u>Definition:</u></b></p>
+                <ul>
+                    <li><b>Object</b> - Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behaviors - wagging the 
+                        tail, barking, eating. An object is an instance of a class.</li>
+                    <li><b>Class</b> - A class can be defined as a template/blueprint that describes the behavior/state that the object of its type support.</li>
+                </ul>
+            </div>
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_basic_datatypes">Basic Datatypes</span>  (source: <a href="https://www.tutorialspoint.com/java/java_basic_datatypes.htm">tutorialspoint</a>)<br/><br/>
+            <p>Variables are nothing but reserved memory locations to store values. This means that when you create a variable you reserve some space in the memory.</p>
+            <p>There are <b>two data types</b> available in Java</p>
+            <ol type="1">
+                <li><b>Primitive</b> Data Types (8 in total: <b>byte</b>, <b>short</b>, <b>int</b>, <b>long</b>, <b>float</b>, <b>double</b>, <b>boolean</b>, 
+                    <b>char</b>)</li>
+                <li><b>Reference/Object</b> Data Types
+                    <ul>
+                        <li>Reference variables are created using defined constructors of the classes. They are used to access objects. These variables are 
+                            declared to be of a specific type that cannot be changed. For example, Employee, Puppy, etc.</li>
+                        <li>Class objects and various type of array variables come under reference datatype.</li>
+                        <li>Default value of any reference variable is null.</li>
+                        <li>A reference variable can be used to refer any object of the declared type or any compatible type.</li>
+                        <li>Example: Animal animal = new Animal("giraffe");</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_variable_types">Variable Types</span>  (source: <a href="https://www.tutorialspoint.com/java/java_variable_types.htm">tutorialspoint</a>)<br/><br/>
+            <p>A variable provides us with named storage that our programs can manipulate. Each variable in Java has a specific type, 
+                which determines the size and layout of the variable's memory; the range of values that can be stored within that memory; 
+                and the set of operations that can be applied to the variable.</p>
+            
+            <p>Example</p>
+<pre class="code">
+int a, b, c;         // Declares three ints, a, b, and c.
+int a = 10, b = 10;  // Example of initialization
+byte B = 22;         // initializes a byte type variable B.
+double pi = 3.14159; // declares and assigns a value of PI.
+char a = 'a';        // the char variable a iis initialized with value 'a'
+</pre>            
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_modifier_types">Modifier Types</span>  (source: <a href="https://www.tutorialspoint.com/java/java_modifier_types.htm">tutorialspoint</a>)<br/><br/>
+            <p>Modifiers are keywords that you add to those definitions to change their meanings. Java language has a wide variety of modifiers, including the following</p>
+            <ul>
+                <li>Java Access Modifiers</li>
+                <li>Non Access Modifiers</li>
+            </ul>      
+            <p>To use a modifier, you include its keyword in the definition of a class, method, or variable.</p>
+
+            <h3 class="mainPoint">Access Control Modifiers</h3>
+            <p>Java provides a number of access modifiers to set access levels for classes, variables, methods and constructors. The four access levels are</p>
+            <ul>
+                <li>Visible to the package, the default. No modifiers are needed.</li>
+                <li>Visible to the class only (<font color="red"><b>private</b></font>).</li>
+                <li>Visible to the world (<font color="red"><b>public</b></font>).</li>
+                <li>Visible to the package and all subclasses (<font color="red"><b>protected</b></font>).</li>
+            </ul>
+            
+            <h3 class="mainPoint">Non-Access Modifiers</h3>
+            <p>Java provides a number of non-access modifiers to achieve many other functionality.</p>
+            <ul>
+                <li>The <font color="red"><b>static</b></font> modifier for creating class methods and variables.</li>
+                <li>The <font color="red"><b>final</b></font> modifier for finalizing the implementations of classes, methods, and variables.</li>
+                <li>The <font color="red"><b>abstract</b></font> modifier for creating abstract classes and methods.</li>
+                <li>The <font color="red"><b>synchronized</b></font> and <font color="red"><b>volatile</b></font> modifiers, which are used for threads.</li>
+            </ul>
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_basic_operators">Basic Operators</span>  (source: <a href="https://www.tutorialspoint.com/java/java_basic_operators.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_loop_control">Loop Control</span>  (source: <a href="https://www.tutorialspoint.com/java/java_loop_control.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_decision_making">Decision Making</span>  (source: <a href="https://www.tutorialspoint.com/java/java_decision_making.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_numbers">Numbers</span>  (source: <a href="https://www.tutorialspoint.com/java/java_numbers.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_characters">Characters</span>  (source: <a href="https://www.tutorialspoint.com/java/java_characters.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_strings">Strings</span>  (source: <a href="https://www.tutorialspoint.com/java/java_strings.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_arrays">Arrays</span>  (source: <a href="https://www.tutorialspoint.com/java/java_arrays.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_date_time">Date &amp; Time</span>  (source: <a href="https://www.tutorialspoint.com/java/java_date_time.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_regular_expressions">Regular Expressions</span>  (source: <a href="https://www.tutorialspoint.com/java/java_regular_expressions.htm">tutorialspoint</a>)<br/><br/>
+            <p>Java provides the <font color="red"><b>java.util.regex</b></font> package for pattern matching with regular expressions. 
+                The <font color="red"><b>java.util.regex</b></font> package primarily consists of the following three classes</p>
+            <ul>
+                <li><b>Pattern Class</b> - A Pattern object is a compiled representation of a regular expression. The Pattern class provides no public 
+                    constructors. To create a pattern, you must first invoke one of its public static <b>compile()</b> methods, which will then return 
+                    a Pattern object. These methods accept a regular expression as the first argument.</li>
+                <li><b>Matcher Clas</b> - A Matcher object is the engine that interprets the pattern and performs match operations against an input 
+                    string. Like the Pattern class, Matcher defines no public constructors. You obtain a Matcher object by invoking the <b>matcher()</b> 
+                    method on a Pattern object.</li>
+                <li><b>PatternSyntaxException</b> - A PatternSyntaxException object is an unchecked exception that indicates a syntax error in a 
+                    regular expression pattern.</li>
+            </ul>
+
+            <h3 class="mainPoint">Capturing Groups</h3>
+            <p>Capturing groups are a way to treat multiple characters as a single unit. They are created by placing the characters to be 
+                grouped inside a set of parentheses.</p>
+            <p>Capturing groups are numbered by counting their opening parentheses from the left to the right. In the expression ((A)(B(C))), 
+                for example, there are four such groups</p>
+            <ul>
+                <li>((A)(B(C)))</li>
+                <li>(A)</li>
+                <li>(B(C))</li>
+                <li>(C)</li>
+            </ul>
+
+            <h3 class="mainPoint">Regular Expression Syntax</h3>
+            <p>Here is the table listing down all the regular expression metacharacter syntax available in Java</p>
+            <table border="1" align="center">
+                    <tr><th>Subexpression</th><th style="text-align:center;">Matches</th></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">&#94;</td><td>Matches the beginning of the line.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">$</td><td>Matches the end of the line.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">.</td><td>Matches any single character except newline. Using <b>m</b> option allows it to match the newline as well.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">[...]</td><td>Matches any single character in brackets.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">[&#94;...]</td><td>Matches any single character not in brackets.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\A</td><td>Beginning of the entire string.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\z</td><td>End of the entire string.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\Z</td><td>End of the entire string except allowable final line terminator.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">re*</td><td>Matches 0 or more occurrences of the preceding expression.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">re&plus;</td><td>Matches 1 or more of the previous thing.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">re?</td><td>Matches 0 or 1 occurrence of the preceding expression.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">re{ n}</td><td>Matches exactly n number of occurrences of the preceding expression.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">re{ n,}</td><td>Matches n or more occurrences of the preceding expression.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">re{ n, m}</td><td>Matches at least n and at most m occurrences of the preceding expression.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">a| b</td><td>Matches either a or b.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">(re)</td><td>Groups regular expressions and remembers the matched text.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">(?: re)</td><td>Groups regular expressions without remembering the matched text.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">(?&gt; re)</td><td>Matches the independent pattern without backtracking.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\w</td><td>Matches the word characters.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\W</td><td>Matches the nonword characters.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\s</td><td>Matches the whitespace. Equivalent to [\t\n\r\f].</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\S</td><td>Matches the nonwhitespace.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\d</td><td>Matches the digits. Equivalent to [0-9].</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\D</td><td>Matches the nondigits.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\A</td><td>Matches the beginning of the string.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\Z</td><td>Matches the end of the string. If a newline exists, it matches just before newline.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\z</td><td>Matches the end of the string.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\G</td><td>Matches the point where the last match finished.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\n</td><td>Back-reference to capture group number "n".</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\b</td><td>Matches the word boundaries when outside the brackets. Matches the backspace (0x08) when inside the brackets.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\B</td><td>Matches the nonword boundaries.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\n, \t, etc.</td><td>Matches newlines, carriage returns, tabs, etc.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\Q</td><td>Escape (quote) all characters up to \E.</td></tr>
+                    <tr><td style="text-align:center;font-weight:bold;">\E</td><td>Ends quoting begun with \Q.</td></tr>
+                </table>
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_methods">Methods</span>  (source: <a href="https://www.tutorialspoint.com/java/java_methods.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_files_io">Files and I/O</span>  (source: <a href="https://www.tutorialspoint.com/java/java_files_io.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_exceptions">Exceptions</span>  (source: <a href="https://www.tutorialspoint.com/java/java_exceptions.htm">tutorialspoint</a>)<br/><br/>
+            
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="java_innerclasses">Inner classes</span>  (source: <a href="https://www.tutorialspoint.com/java/java_innerclasses.htm">tutorialspoint</a>)<br/><br/>
+            
+            <p align="right">(<a href="#tableOfContent">Table of Content</a>)</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

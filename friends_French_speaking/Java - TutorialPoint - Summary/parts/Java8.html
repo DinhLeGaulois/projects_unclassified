@@ -1,0 +1,652 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Java 8 Tutorial</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		body{
+			background-color:black;
+			font-size:200%;
+		}
+    
+        td, th{ padding:10px; }
+
+        .part{
+            background-color:black;
+            color:cyan;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight:bold;
+			font-size:150%;
+        }
+        
+        .def{
+            background-color:#2c2d19;
+            color:white;
+            padding:20px;
+            margin:10px;
+            border-radius:20px;
+        }        
+
+        .code{
+            background-color:#355367;
+            font-weight:bold;
+            color:white;
+            padding:20px;
+            margin:30px;
+            border-radius:20px;
+        }
+
+        .mainPoint{
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        .panel{ margin:20px; }
+
+        .panel-body{ background-color: #e3ded1; }
+
+        .container{ width:95%; }
+	</style>
+</head>
+
+<body>
+<br/>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h1 align="center" id="tableOfContent">Java 8 Tutorial</h1>
+            <h3 align="center">(Source: <a href="https://www.tutorialspoint.com/java8/index.htm"><font color="blue">tutorialspoint</font></a>)</h3>
+        </div>
+        <div class="panel-body" style="text-align: center;">
+            <h2><a href="#lambda_expressions">Lambda Expressions</a></h2>
+            <h2><a href="#method_references">Method References</a></h2>
+            <h2><a href="#functional_interfaces">Functional Interfaces</a></h2>
+            <h2><a href="#default_methods">Default Methods</a></h2>
+            <h2><a href="#streams">Streams</a></h2>
+            <h2><a href="#optional_class">Optional Class</a></h2>
+            <h2><a href="#nashorn_java_script">Nashorn JavaScript</a></h2>
+            <h2><a href="#datetime_api">New Date/Time API</a></h2>
+            <h2><a href="#base64">Base64</a></h2>
+        </div>
+    </div>
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h1 align="center">Java 8 Tutorial - Content</h1></div>
+        <div class="panel-body">
+            <span class="part" id="lambda_expressions">Lambda Expressions</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_lambda_expressions.htm">tutorialspoint</a>)<br/><br/>
+            <p>Lambda expressions are introduced in Java 8 and are touted to be the biggest feature of Java 8. Lambda expression facilitates 
+                functional programming, and simplifies the development a lot.</p>
+
+            <h3 class="mainPoint">Syntax</h3>
+            <p>A lambda expression is characterized by the following syntax.</p>
+            <pre class="code">parameter -> expression body</pre>
+            <p>Following are the important characteristics of a lambda expression.</p>
+            <ul>
+                <li><b>Optional type declaration</b> - No need to declare the type of a parameter. The compiler can inference the same from the value of the parameter.</li>
+                <li><b>Optional parenthesis around parameter</b> - No need to declare a single parameter in parenthesis. For multiple parameters, parentheses are required.</li>
+                <li><b>Optional curly braces</b> - No need to use curly braces in expression body if the body contains a single statement.</li>
+                <li><b>Optional return keyword</b> - The compiler automatically returns the value if the body has a single expression to return the value. Curly braces are 
+                    required to indicate that expression returns a value.</li>
+            </ul>
+
+            <p class="mainPoint">Lambda Expressions Example</p>
+<pre class="code">
+public class Java8Tester {    
+    public static void main(String args[]) {
+        Java8Tester tester = new Java8Tester();
+        
+        //with type declaration
+        MathOperation addition = (int a, int b) -> a + b;
+        
+        //with out type declaration
+        MathOperation subtraction = (a, b) -> a - b;
+        
+        //with return statement along with curly braces
+        MathOperation multiplication = (int a, int b) -> { return a * b; };
+        
+        //without return statement and without curly braces
+        MathOperation division = (int a, int b) -> a / b;
+        
+        System.out.println("10 + 5 = " + tester.operate(10, 5, addition));
+        System.out.println("10 - 5 = " + tester.operate(10, 5, subtraction));
+        System.out.println("10 x 5 = " + tester.operate(10, 5, multiplication));
+        System.out.println("10 / 5 = " + tester.operate(10, 5, division));
+        
+        //without parenthesis
+        GreetingService greetService1 = message ->
+        System.out.println("Hello " + message);
+        
+        //with parenthesis
+        GreetingService greetService2 = (message) ->
+        System.out.println("Hello " + message);
+        
+        greetService1.sayMessage("Mahesh");
+        greetService2.sayMessage("Suresh");
+    }
+    
+    interface MathOperation {
+        int operation(int a, int b);
+    }
+    
+    interface GreetingService {
+        void sayMessage(String message);
+    }
+    
+    private int operate(int a, int b, MathOperation mathOperation) {
+        return mathOperation.operation(a, b);
+    }
+}    
+</pre>            
+            <p>Following are the important points to be considered in the above example.</p>
+            <ul>
+                <li>Lambda expressions are used primarily to define inline implementation of a functional interface, i.e., an interface with a single 
+                    method only. In the above example, we've used various types of lambda expressions to define the operation method of 
+                    MathOperation interface. Then we have defined the implementation of sayMessage of GreetingService.</li>
+                <li>Lambda expression eliminates the need of anonymous class and gives a very simple yet powerful functional programming capability 
+                    to Java.</li>
+            </ul>
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="method_references">Method References</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_method_references.htm">tutorialspoint</a>)<br/><br/>
+            <p>Method references help to point to methods by their names. A method reference is described using "<font color="red"><b>::</b></font>" symbol. A method reference can be used to point the following types of methods</p>
+            <ul>
+                <li>Static methods</li>
+                <li>Instance methods</li>
+                <li>Constructors using new operator (TreeSet<font color="red"><b>::</b></font>new)</li>
+            </ul>
+
+            <p class="mainPoint">Example</p>
+<pre class="code">
+import java.util.List;
+import java.util.ArrayList;
+
+public class Java8Tester {
+
+    public static void main(String args[]) {
+        List names = new ArrayList();
+        
+        names.add("Mahesh");
+        names.add("Suresh");
+        names.add("Ramesh");
+        names.add("Naresh");
+        names.add("Kalpesh");
+        
+        names.forEach(System.out::println);
+    }
+}    
+</pre>            
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="functional_interfaces">Functional Interfaces</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_functional_interfaces.htm">tutorialspoint</a>)<br/><br/>
+            <p>Functional interfaces (with <font color="red"><b>java.util.Function</b></font> package) have a <font color="blue"><b>single</b></font> functionality to exhibit. For example, a Comparable 
+                interface with a single method 'compareTo' is used for comparison purpose. Java 8 has defined a lot of functional interfaces 
+                to be used extensively in lambda expressions.</p>
+            <h3 class="mainPoint">Functional Interface Example</h3>
+            <p>Predicate <font color="red"><b>&lt;T&gt;</b></font> interface is a functional interface with a method test(Object) to return a Boolean value. This interface 
+                signifies that an object is tested to be true or false.</p>
+
+            <p class="mainPoint">Example</p>
+<pre class="code">
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
+public class Java8Tester {
+
+    public static void main(String args[]) {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        
+        // Predicate<Integer> predicate = n -> true
+        // n is passed as parameter to test method of Predicate interface
+        // test method will always return true no matter what value n has.
+        
+        System.out.println("Print all numbers:");
+        
+        //pass n as parameter
+        eval(list, n->true);
+        
+        // Predicate<Integer> predicate1 = n -> n%2 == 0
+        // n is passed as parameter to test method of Predicate interface
+        // test method will return true if n%2 comes to be zero
+        
+        System.out.println("Print even numbers:");
+        eval(list, n-> n%2 == 0 );
+        
+        // Predicate<Integer> predicate2 = n -> n > 3
+        // n is passed as parameter to test method of Predicate interface
+        // test method will return true if n is greater than 3.
+        
+        System.out.println("Print numbers greater than 3:");
+        eval(list, n-> n > 3 );
+    }
+    
+    public static void eval(List<Integer> list, Predicate<Integer> predicate) {
+
+        for(Integer n: list) {
+
+            if(predicate.test(n)) {
+            System.out.println(n + " ");
+            }
+        }
+    }
+}    
+</pre>            
+            <p>Here we've passed Predicate interface, which takes a single input and returns Boolean.</p>
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="default_methods">Default Methods</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_default_methods.htm">tutorialspoint</a>)<br/><br/>
+            <p>Java 8 introduces a new concept of default method implementation in interfaces. This capability is added for backward compatibility 
+                so that old interfaces can be used to leverage the lambda expression capability of Java 8.</p>
+            <p>For example, 'List' or 'Collection' interfaces do not have 'forEach' method declaration. Thus, adding such method will simply break 
+                the collection framework implementations. Java 8 introduces default method so that List/Collection interface can have a default 
+                implementation of forEach method, and the class implementing these interfaces need not implement the same.</p>
+            <p class="mainPoint">Syntax</p>
+            <p>With <font color="red"><b>default</b></font> functions in interfaces, there is a possibility that a class is implementing two interfaces with same default methods. 
+                The following code explains how this ambiguity can be resolved.</p>
+<pre class="code">
+public class Java8Tester {
+    
+    public static void main(String args[]) {
+        Vehicle vehicle = new Car();
+        vehicle.print();
+    }
+}
+
+interface Vehicle {
+
+    default void print() {
+        System.out.println("I am a vehicle!");
+    }
+    
+    static void blowHorn() {
+        System.out.println("Blowing horn!!!");
+    }
+}
+
+interface FourWheeler {
+
+    default void print() {
+        System.out.println("I am a four wheeler!");
+    }
+}
+
+class Car implements Vehicle, FourWheeler {
+
+    public void print() {
+        Vehicle.super.print();
+        FourWheeler.super.print();
+        Vehicle.blowHorn();
+        System.out.println("I am a car!");
+    }
+}
+</pre>            
+            <p>Output</p>
+<pre class="code">
+I am a vehicle!
+I am a four wheeler!
+Blowing horn!!!
+I am a car!    
+</pre>            
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="streams">Streams</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_streams.htm">tutorialspoint</a>)<br/><br/>
+            <p>Stream is a new abstract layer introduced in Java 8. Using stream, you can process data in a declarative way similar to SQL statements.</p>
+            <h3 class="mainPoint">Characteristics of a Stream</h3>
+            <ul>
+                <li><b>Sequence of elements</b> - A stream provides a set of elements of specific type in a sequential manner. A stream gets/computes 
+                    elements on demand. It never stores the elements.</li>
+                <li><b>Source</b> - Stream takes Collections, Arrays, or I/O resources as input source.</li>
+                <li><b>Aggregate operations</b> - Stream supports aggregate operations like filter, map, limit, reduce, find, match, and so on.</li>
+                <li><b>Pipelining</b> - Most of the stream operations return stream itself so that their result can be pipelined. These operations are 
+                    called intermediate operations and their function is to take input, process them, and return output to the target. collect() 
+                    method is a terminal operation which is normally present at the end of the pipelining operation to mark the end of the stream.</li>
+                <li><b>Automatic iterations</b> - Stream operations do the iterations internally over the source elements provided, in contrast to 
+                    Collections where explicit iteration is required.</li>
+            </ul>
+
+            <h3 class="mainPoint">Generating Streams</h3>
+            <p>With Java 8, Collection interface has two methods to generate a Stream.</p>
+            <ul>
+                <li>stream() − Returns a sequential stream considering collection as its source.</li>
+                <li>parallelStream() − Returns a parallel Stream considering collection as its source.</li>
+            </ul>
+<pre class="code">
+List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());    
+</pre> 
+
+            <h3 class="mainPoint">forEach</h3>
+<pre class="code">
+Random random = new Random();
+random.ints().limit(10).forEach(System.out::println);
+</pre>            
+
+            <h3 class="mainPoint">map</h3>
+<pre class="code">
+List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        
+//get list of unique squares
+List<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
+</pre>            
+
+            <h3 class="mainPoint">filter</h3>
+<pre class="code">
+List<String>strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+        
+//get count of empty string
+int count = strings.stream().filter(string -> string.isEmpty()).count();
+</pre>            
+
+            <h3 class="mainPoint">limit</h3>
+<pre class="code">
+Random random = new Random();
+random.ints().limit(10).forEach(System.out::println);
+</pre>            
+
+            <h3 class="mainPoint">sorted</h3>
+<pre class="code">
+Random random = new Random();
+random.ints().limit(10).sorted().forEach(System.out::println);
+</pre>            
+
+            <h3 class="mainPoint">Parallel Processing</h3>
+<pre class="code">
+List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+        
+//get count of empty string
+int count = strings.parallelStream().filter(string -> string.isEmpty()).count();
+</pre>            
+
+            <h3 class="mainPoint">Collectors</h3>
+<pre class="code">
+List<String>strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+
+System.out.println("Filtered List: " + filtered);
+String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
+System.out.println("Merged String: " + mergedString);
+</pre>            
+
+            <h3 class="mainPoint">Statistics</h3>
+<pre class="code">
+List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        
+IntSummaryStatistics stats = integers.stream().mapToInt((x) -> x).summaryStatistics();
+
+System.out.println("Highest number in List : " + stats.getMax());
+System.out.println("Lowest number in List : " + stats.getMin());
+System.out.println("Sum of all numbers : " + stats.getSum());
+System.out.println("Average of all numbers : " + stats.getAverage());    
+</pre>    
+            <h3 class="mainPoint">Example of Stream</h3>                   
+<pre class="code">
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.Map;
+
+public class Java8Tester {
+
+    public static void main(String args[]) {
+        System.out.println("Using Java 7: ");
+        
+        // Count empty strings
+        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+        System.out.println("List: " +strings);
+        long count = getCountEmptyStringUsingJava7(strings);
+        
+        System.out.println("Empty Strings: " + count);
+        count = getCountLength3UsingJava7(strings);
+        
+        System.out.println("Strings of length 3: " + count);
+        
+        //Eliminate empty string
+        List<String> filtered = deleteEmptyStringsUsingJava7(strings);
+        System.out.println("Filtered List: " + filtered);
+        
+        //Eliminate empty string and join using comma.
+        String mergedString = getMergedStringUsingJava7(strings,", ");
+        System.out.println("Merged String: " + mergedString);
+        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        
+        //get list of square of distinct numbers
+        List<Integer> squaresList = getSquares(numbers);
+        System.out.println("Squares List: " + squaresList);
+        List<Integer> integers = Arrays.asList(1,2,13,4,15,6,17,8,19);
+        
+        System.out.println("List: " +integers);
+        System.out.println("Highest number in List : " + getMax(integers));
+        System.out.println("Lowest number in List : " + getMin(integers));
+        System.out.println("Sum of all numbers : " + getSum(integers));
+        System.out.println("Average of all numbers : " + getAverage(integers));
+        System.out.println("Random Numbers: ");
+        
+        //print ten random numbers
+        Random random = new Random();
+        
+        for(int i = 0; i < 10; i++) {
+            System.out.println(random.nextInt());
+        }
+        
+        System.out.println("Using Java 8: ");
+        System.out.println("List: " +strings);
+        
+        count = strings.stream().filter(string->string.isEmpty()).count();
+        System.out.println("Empty Strings: " + count);
+        
+        count = strings.stream().filter(string -> string.length() == 3).count();
+        System.out.println("Strings of length 3: " + count);
+        
+        filtered = strings.stream().filter(string ->!string.isEmpty()).collect(Collectors.toList());
+        System.out.println("Filtered List: " + filtered);
+        
+        mergedString = strings.stream().filter(string ->!string.isEmpty()).collect(Collectors.joining(", "));
+        System.out.println("Merged String: " + mergedString);
+        
+        squaresList = numbers.stream().map( i ->i*i).distinct().collect(Collectors.toList());
+        System.out.println("Squares List: " + squaresList);
+        System.out.println("List: " +integers);
+        
+        IntSummaryStatistics stats = integers.stream().mapToInt((x) ->x).summaryStatistics();
+        
+        System.out.println("Highest number in List : " + stats.getMax());
+        System.out.println("Lowest number in List : " + stats.getMin());
+        System.out.println("Sum of all numbers : " + stats.getSum());
+        System.out.println("Average of all numbers : " + stats.getAverage());
+        System.out.println("Random Numbers: ");
+        
+        random.ints().limit(10).sorted().forEach(System.out::println);
+        
+        //parallel processing
+        count = strings.parallelStream().filter(string -> string.isEmpty()).count();
+        System.out.println("Empty Strings: " + count);
+    }
+    
+    private static int getCountEmptyStringUsingJava7(List<String> strings) {
+        int count = 0;
+
+        for(String string: strings) {
+        
+            if(string.isEmpty()) {
+            count++;
+            }
+        }
+        return count;
+    }
+    
+    private static int getCountLength3UsingJava7(List<String> strings) {
+        int count = 0;
+        
+        for(String string: strings) {
+        
+            if(string.length() == 3) {
+            count++;
+            }
+        }
+        return count;
+    }
+    
+    private static List<String> deleteEmptyStringsUsingJava7(List<String> strings) {
+        List<String> filteredList = new ArrayList<String>();
+        
+        for(String string: strings) {
+        
+            if(!string.isEmpty()) {
+                filteredList.add(string);
+            }
+        }
+        return filteredList;
+    }
+    
+    private static String getMergedStringUsingJava7(List<String> strings, String separator) {
+        StringBuilder stringBuilder = new StringBuilder();
+        
+        for(String string: strings) {
+        
+            if(!string.isEmpty()) {
+            stringBuilder.append(string);
+            stringBuilder.append(separator);
+            }
+        }
+        String mergedString = stringBuilder.toString();
+        return mergedString.substring(0, mergedString.length()-2);
+    }
+    
+    private static List<Integer> getSquares(List<Integer> numbers) {
+        List<Integer> squaresList = new ArrayList<Integer>();
+        
+        for(Integer number: numbers) {
+            Integer square = new Integer(number.intValue() * number.intValue());
+            
+            if(!squaresList.contains(square)) {
+            squaresList.add(square);
+            }
+        }
+        return squaresList;
+    }
+    
+    private static int getMax(List<Integer> numbers) {
+        int max = numbers.get(0);
+        
+        for(int i = 1;i < numbers.size();i++) {
+        
+            Integer number = numbers.get(i);
+            
+            if(number.intValue() > max) {
+            max = number.intValue();
+            }
+        }
+        return max;
+    }
+    
+    private static int getMin(List<Integer> numbers) {
+        int min = numbers.get(0);
+        
+        for(int i= 1;i < numbers.size();i++) {
+            Integer number = numbers.get(i);
+        
+            if(number.intValue() < min) {
+            min = number.intValue();
+            }
+        }
+        return min;
+    }
+    
+    private static int getSum(List numbers) {
+        int sum = (int)(numbers.get(0));
+        
+        for(int i = 1;i < numbers.size();i++) {
+            sum += (int)numbers.get(i);
+        }
+        return sum;
+    }
+    
+    private static int getAverage(List<Integer> numbers) {
+        return getSum(numbers) / numbers.size();
+    }
+}    
+</pre>         
+            <p>Output</p>
+<pre class="code">
+Using Java 7:
+List: [abc, , bc, efg, abcd, , jkl]
+Empty Strings: 2
+Strings of length 3: 3
+Filtered List: [abc, bc, efg, abcd, jkl]
+Merged String: abc, bc, efg, abcd, jkl
+Squares List: [9, 4, 49, 25]
+List: [1, 2, 13, 4, 15, 6, 17, 8, 19]
+Highest number in List : 19
+Lowest number in List : 1
+Sum of all numbers : 85
+Average of all numbers : 9
+Random Numbers:
+-1279735475
+903418352
+-1133928044
+-1571118911
+628530462
+18407523
+-881538250
+-718932165
+270259229
+421676854
+Using Java 8:
+List: [abc, , bc, efg, abcd, , jkl]
+Empty Strings: 2
+Strings of length 3: 3
+Filtered List: [abc, bc, efg, abcd, jkl]
+Merged String: abc, bc, efg, abcd, jkl
+Squares List: [9, 4, 49, 25]
+List: [1, 2, 13, 4, 15, 6, 17, 8, 19]
+Highest number in List : 19
+Lowest number in List : 1
+Sum of all numbers : 85
+Average of all numbers : 9.444444444444445
+Random Numbers:
+-1009474951
+-551240647
+-2484714
+181614550
+933444268
+1227850416
+1579250773
+1627454872
+1683033687
+1798939493
+Empty Strings: 2    
+</pre>            
+
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="optional_class">Optional Class</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_optional_class.htm">tutorialspoint</a>)<br/><br/>
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="nashorn_java_script">Nashorn JavaScript</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_nashorn_java_script.htm">tutorialspoint</a>)<br/><br/>
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="datetime_api">New Date/Time API</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_datetime_api.htm">tutorialspoint</a>)<br/><br/>
+            <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+            <!-- *************************************************************************** -->
+            <!-- *************************************************************************** -->
+            <span class="part" id="base64">Base64</span>  (source: <a href="https://www.tutorialspoint.com/java8/java8_base64.htm">tutorialspoint</a>)<br/><br/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

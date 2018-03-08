@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Java Object Oriented</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		body{
+			background-color:black;
+			font-size:200%;
+		}
+    
+        td, th{ padding:10px; }
+
+        .part{
+            background-color:black;
+            color:cyan;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight:bold;
+			font-size:150%;
+        }
+        
+        .def{
+            background-color:#2c2d19;
+            color:white;
+            padding:20px;
+            margin:10px;
+            border-radius:20px;
+        }        
+
+        .code{
+            background-color:#355367;
+            font-weight:bold;
+            color:white;
+            padding:20px;
+            margin:30px;
+            border-radius:20px;
+        }
+
+        .mainPoint{
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        .panel{ margin:20px; }
+
+        .panel-body{ background-color: #e3ded1; }
+
+        .container{ width:95%; }
+	</style>
+</head>
+
+<body>	
+<br/>    
+<div class="container">
+<div class="panel panel-primary">
+    <div class="panel-heading"><h1 align="center" id="tableOfContent">Java Object Oriented</h1>
+        <h3 align="center">(Source: <a href="https://www.tutorialspoint.com/java/java_inheritance.htm"><font color="blue">tutorialspoint</font></a>)</h3>
+    </div>
+    <div class="panel-body" style="text-align: center;">
+        <h2><a href="#java_inheritance">Inheritance</a></h2>
+        <h2><a href="#java_overriding">Overriding</a></h2>
+        <h2><a href="#java_polymorphism">Polymorphism</a></h2>
+        <h2><a href="#java_abstraction">Abstraction</a></h2>
+        <h2><a href="#java_encapsulation">Encapsulation</a></h2>
+        <h2><a href="#java_interfaces">Interfaces</a></h2>
+        <h2><a href="#java_packages">Packages</a></h2>
+    </div>
+</div>
+
+<div class="panel panel-primary">    
+    <div class="panel-heading"><h1 align="center">Java Object Oriented - Content</h1></div>
+    <div class="panel-body">
+        <span class="part" id="java_inheritance">Inheritance</span>  (source: <a href="https://www.tutorialspoint.com/java/java_inheritance.htm" target="_blank">tutorialspoint</a>)
+        <div class="def">
+            <p><b><u>Definition:</u></b></p>
+            <ul> 
+                <li>Inheritance can be defined as the process where one class acquires the properties (methods and fields) of another.</li>
+                <li>The class which inherits the properties of other is known as <font color="red"><b>subclass</b></font> (derived class, child class) 
+                    and the class whose properties are inherited is known as <font color="red"><b>superclass</b></font> (base class, parent class).
+                </li>
+            </ul>
+        </div>
+
+        <p>The Superclass reference variable can hold the subclass object, but using that variable you can access only 
+            the members of the superclass, so to access the members of both classes it is recommended to always create 
+            reference variable to the subclass.</p>
+        <div class="def">
+            <p><b><u>Note:</u></b> A subclass inherits all the members (fields, methods, and nested classes) from its superclass. 
+                <font color="yellow">Constructors are not members</font>, so they are not inherited by subclasses, but the constructor of the superclass 
+                can be invoked from the subclass.</p>
+        </div>
+
+        <h3 class="mainPoint">The <font color="red">super</font> keyword</h3>
+        <p>The <font color="red"><b>super</b></font> keyword is similar to <font color="red"><b>this</b></font> keyword.
+        Following are the senarios where the <font color="red"><b>super</b></font> keyword is used.</p>
+        <ul>
+            <li>It is used to <b>differentiate the members</b> of superclass from the members of subclass, if they have same names.</li>
+            <li>It is used to <b>invoke the superclass</b> constructor from subclass.</li>
+        </ul>
+<h3>Example:</h3>
+<pre class="code">
+class Super_class {
+    int num = 20;
+
+    // display method of superclass
+    public void display() {
+        System.out.println("This is the display method of superclass");
+    }
+}
+
+public class Sub_class extends Super_class {
+    int num = 10;
+
+    // display method of sub class
+    public void display() {
+        System.out.println("This is the display method of subclass");
+    }
+
+    public void my_method() {
+        // Instantiating subclass
+        Sub_class sub = new Sub_class();
+
+        // Invoking the display() method of sub class
+        sub.display();
+
+        // Invoking the display() method of superclass
+        super.display();
+
+        // printing the value of variable num of subclass
+        System.out.println("value of the variable named num in sub class:"+ sub.num);
+
+        // printing the value of variable num of superclass
+        System.out.println("value of the variable named num in super class:"+ super.num);
+    }
+
+    public static void main(String args[]) {
+        Sub_class obj = new Sub_class();
+        obj.my_method();
+    }
+}
+</pre>      
+
+<h3>Output:</h3>
+<pre class="code">
+This is the display method of subclass
+This is the display method of superclass
+value of the variable named num in sub class:10
+value of the variable named num in super class:20
+</pre>
+        <h3 class="mainPoint">Invoking <b>Superclass Constructor</b>: </h3>
+        <pre class="code">super(values);</pre>
+        
+        <div class="def">
+            <font color="red"><b><u>Attention:</u></b></font> a very important fact to remember is that <b><u>Java does not support 
+                multiple inheritance.</u></b> However, a class can implement one or more <font color="yellow"><b>interfaces</b></font>, which has helped Java get rid of 
+                the impossibility of multiple inheritance.
+        </div>
+        <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+
+        <!-- *************************************************************************** -->
+        <!-- *************************************************************************** -->
+        <span class="part" id="java_overriding">Overriding</span>  (source: <a href="https://www.tutorialspoint.com/java/java_overriding.htm" target="_blank">tutorialspoint</a>)<br/><br/>        
+        <p>In the previous chapter, we talked about superclasses and subclasses. If a class inherits a method from 
+            its superclass, then there is a chance to override the method provided that it is <b><u>not marked final</u></b>.</p>
+                
+        <p>The benefit of overriding is: ability to define a behavior that's specific to the subclass type, which 
+            means a subclass can implement a parent class method based on its requirement.</p>
+        <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+
+        <!-- *************************************************************************** -->
+        <!-- *************************************************************************** -->
+        <span class="part" id="java_polymorphism">Polymorphism</span> (<a href="https://www.tutorialspoint.com/java/java_polymorphism.htm" target="_blank">tutorialspoint</a>)<br/><br/>
+        <div class="def">
+            <h3><b><u>Definition:</u></b></h3>
+            <ul>
+                <li>Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP 
+                    occurs when a parent class reference is used to refer to a child class object.
+                </li>
+                <li>It is important to know that the only possible way to access an object is through a <font color="red">reference</font> variable. A reference 
+                    variable can be of only one type. Once declared, the type of a reference variable cannot be changed.</li>
+            </ul>
+        </div>
+
+        <h3>Example</h3>
+<pre class="code">
+public interface Vegetarian{}
+public class Animal{}
+public class Deer extends Animal implements Vegetarian{}    
+</pre>
+
+        <p>Now, the Deer class is considered to be polymorphic since this has multiple inheritance. Following are true for the above examples</p>
+        <ul>
+            <li>A Deer IS-A Animal</li>
+            <li>A Deer IS-A Vegetarian</li>
+            <li>A Deer IS-A Deer</li>
+            <li>A Deer IS-A Object</li>
+        </ul>
+        <p>When we apply the reference variable facts to a Deer object reference, the following declarations are legal</p>
+
+<pre class="code">
+Deer d = new Deer();
+Animal a = d;
+Vegetarian v = d;
+Object o = d;    
+</pre>      
+        <p>All the reference variables d, a, v, o refer to the same Deer object in the heap.</p>
+        <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+
+        <!-- *************************************************************************** -->
+        <!-- *************************************************************************** -->
+        <span class="part" id="java_abstraction">Abstraction</span>  (source: <a href="https://www.tutorialspoint.com/java/java_abstraction.htm" target="_blank">tutorialspoint</a>)<br/><br/>
+        <div class="def">
+            <p><b><u>Definition:</u></b> in Object-oriented programming, abstraction is a process of hiding the implementation details from the user, only the 
+                functionality will be provided to the user. In other words, the user will have the information on what the object does instead of how it does it.</p>
+        </div>
+        <h3 class="mainPoint">Abstract Class</h3>
+        <p>A class which contains the <font color="red"><b>abstract</b></font> keyword in its declaration is known as abstract class.</p>
+        <ul>
+            <li>Abstract classes may or may not contain <i>abstract methods</i>, i.e., methods without body ( public void get(); )</li>
+            <li>But, if a class has at least one abstract method, then the class <b>must</b> be declared abstract.</li>
+            <li>If a class is declared abstract, it cannot be instantiated.</li>
+            <li>To use an abstract class, you have to inherit it from another class, provide implementations to the abstract methods in it.</li>
+            <li>If you inherit an abstract class, you have to provide implementations to all the abstract methods in it.</li>
+        </ul>
+        <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+
+        <!-- *************************************************************************** -->
+        <!-- *************************************************************************** -->
+        <span class="part" id="java_encapsulation">Encapsulation</span>  (source: <a href="https://www.tutorialspoint.com/java/java_encapsulation.htm" target="_blank">tutorialspoint</a>)<br/><br/>
+        <div class="def">
+            <h3><b><u>Definition</u></b></h3>
+            <ul>
+                <li><b>Encapsulation</b> is one of the four fundamental OOP concepts. The other three are <b>inheritance</b>, <b>polymorphism</b>, and <b>abstraction</b>.</li>
+                <li>Encapsulation in Java is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. 
+                    In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their 
+                    current class. Therefore, it is also known as <b>data hiding</b>.</li>
+            </ul>
+        </div>
+
+        <p>To achieve encapsulation in Java</p>
+        <ul>
+            <li>Declare the variables of a class as <font color="red"><b>private</b></font>.</li>
+            <li>Provide public <b>setter</b> and <b>getter</b> methods to modify and view the variables values.</li>
+        </ul>
+        <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+
+        <!-- *************************************************************************** -->
+        <!-- *************************************************************************** -->
+        <span class="part" id="java_interfaces">Interfaces</span>  (source: <a href="https://www.tutorialspoint.com/java/java_interfaces.htm" target="_blank">tutorialspoint</a>)<br/><br/>
+        <div class="def">
+            <h3><b><u>Definition:</u></b></h3>
+            <ul>
+                <li>An interface is a reference type in Java. It is similar to class. It is a collection of abstract methods. A class implements an interface, thereby 
+                    inheriting the abstract methods of the interface.</li>
+                <li>Along with abstract methods, an interface may also contain constants, default methods, static methods, and nested types. Method bodies exist only 
+                    for default methods and static methods.</li>
+                <li>Unless the class that implements the interface is abstract, all the methods of the interface need to be defined in the class.</li>
+            </ul>
+        </div>
+
+        <p>An interface is similar to a class in the following ways</p>
+        <ul>
+            <li>An interface can contain any number of methods.</li>
+            <li>An interface is written in a file with a <b>.java</b> extension, with the name of the interface matching the name of the file.</li>
+            <li>The byte code of an interface appears in a <b>.class file</b>.</li>
+            <li>Interfaces appear in packages, and their corresponding bytecode file must be in a directory structure that matches the package name.</li>
+        </ul>
+
+        <p>However, an interface is different from a class in several ways, including</p>
+        <ul>
+            <li>You cannot instantiate an interface.</li>
+            <li>An interface does not contain any constructors.</li>
+            <li>All of the methods in an interface are abstract.</li>
+            <li>An interface cannot contain instance fields. The only fields that can appear in an interface must be declared both static and final.</li>
+            <li>An interface is not extended by a class; it is implemented by a class.</li>
+            <li>An interface can extend multiple interfaces.</li>
+        </ul>
+
+        <h3 class="mainPoint"><u><b>Declaring Interfaces</b></u></h3>
+        <p>The <font color="red"><b>interface</b></font> keyword is used to declare an interface. Here is a simple example to declare an interface</p>
+
+        <p>Example</p>
+<pre class="code">
+/* File name : NameOfInterface.java */
+import java.lang.*;
+// Any number of import statements
+
+public interface NameOfInterface {
+    // Any number of final, static fields
+    // Any number of abstract method declarations\
+}    
+</pre>        
+        <br/><p align="right">(<a href="#tableOfContent">Table of Content</a>)</p><hr/>
+
+        <!-- *************************************************************************** -->
+        <!-- *************************************************************************** -->
+        <span class="part" id="java_packages">Packages</span>  (source: <a href="https://www.tutorialspoint.com/java/java_packages.htm" target="_blank">tutorialspoint</a>)<br/><br/>
+        <div class="def">
+            <p><b><u>Definition:</u></b> Packages are used in Java in order to prevent naming conflicts, to control access, to make searching/locating and usage of 
+                classes, interfaces, enumerations and annotations easier, etc.</p>
+        </div>
+
+        <p>A <font color="red"><b>Package</b></font> can be defined as a grouping of related types (classes, interfaces, enumerations and annotations ) providing access 
+            protection and namespace management.</p>
+        <p>Some of the existing packages in Java are</p>
+        <ul>
+            <li><b>java.lang</b> - bundles the fundamental classes</li>
+            <li><b>java.io</b> - classes for input , output functions are bundled in this package</li>
+        </ul>
+
+        <h3 class="mainPoint">Creating a Package</h3>
+        <p>While creating a package, you should choose a name for the package and include a package statement along with that name at <b><u>the top</u></b> of every source file that contains the classes, interfaces, enumerations, and annotation types that you want to include in the package.</p>
+        
+        <p>The package statement should be the <b><u>first line</u></b> in the source file. There can be only one package statement in each source file, and it 
+        applies to all types in the file.</p>
+        
+        <p>If a package statement is not used then the class, interfaces, enumerations, and annotation types will be placed in the current default package.</p>
+        
+        <p>To compile the Java programs with package statements, you have to use <font color="red"><b>-d</b></font> option as shown below.</p>
+
+<pre class="code">javac -d Destination_folder file_name.java</pre>
+
+        <h3><b><u>Question:</u></b> How to add/put several classes into a same package?</h3>
+        <h3><b><u>Answer:</u></b> use the <b>SAME NAME</b> for the <b>parkage</b> in all of the concerned files.</h3>
+<pre class="code">        
+/************************* ONE CLASS **************************/
+/* File name: MyClass1.java */    
+package allMyClasses;  // <======= SAME package's name
+
+public class MyClass1 implements ParentClass{ ... }
+
+/************************* ANOTHER CLASS **************************/
+/* File name: MyClass2.java */    
+package allMyClasses;  // <======= SAME package's name
+
+public class MyClass2 { ... }
+</pre>
+
+        <p align="right">(<a href="#tableOfContent">Table of Content</a>)</p>
+    </div>
+</div>
+</div>
+</body>
+</html>

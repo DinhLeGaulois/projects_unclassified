@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Discordance Between Name and Object</title>
+    <style>
+        body {
+            background-color: black;
+            font-size: 150%;
+            color: blue;
+        }
+
+        .btnAnimalSelection {
+            background-color: black;
+            color: cyan;
+            font-size: 150%;
+            padding: 30px;
+            font-weight: bold;
+            border-color: cyan;
+            box-shadow: 4px 4px gray;
+        }
+
+        .btnAnimalSelection:hover {
+            background-color: white;
+            color: green;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+    <script src="assets/script/animal.js"></script>
+</head>
+
+<body>
+    <p align="center">
+        <button id="btnPlace" class="btnAnimalSelection">Next Animal To Show</button>
+        <br/>
+        <span id="nextAnimal"></span>
+    </p>
+    <div id="displayArea"></div>
+
+    <script>
+        let maxSeconds = 3;
+        let animal2Show = "Monkey";
+
+        let isVowel = (c) => {
+            let char = c.toLowerCase();
+            return (char == 'a') || (char == 'e') || (char == 'i') || (char == 'o') || (char == 'u');
+        }
+
+        let myTimeOut = () => {
+            $("#displayArea").html("");
+            let position1 = Math.floor(Math.random() * animals.length);
+            let img = "<img src='" + animals[position1] + "' />";
+            let a = animals[position1].split("/")
+            animal2Show = a[a.length - 1].split(".")[0];
+            let counter = maxSeconds - 1;
+
+            let startingExpr = isVowel(animal2Show.charAt(0)) ? "An" : "A";
+
+            $("#nextAnimal").html("<h2>" + startingExpr + " <font color='red'>" + animal2Show.toUpperCase() + "</font> will be displayed in: " + (counter + 1) + "</h2>");
+            let interval = setInterval(() => {
+                $("#nextAnimal").html("<h2>" + startingExpr + " <font color='red'>" + animal2Show.toUpperCase() + "</font> will be displayed in: " + counter + "</h2>");
+                counter--;
+            }, 1000);
+            setTimeout(() => {
+                let position2 = Math.floor(Math.random() * animals.length);
+                let img = "<img src='" + animals[position2] + "' />";
+                if (position1 == position2)
+                    $("#displayArea").html("<hr/><h1 align='center'><font color='yellow'>[You're Lucky, Try Again!]</font></h1><br/><p align='center'>" + img + "</p>");
+                else
+                    $("#displayArea").html("<hr/><h3 align='center'><font color='yellow'>[Not Every WORD Could Be Trusted! This is NOT " + 
+                    startingExpr.toLowerCase() + " <font color='red'>" + animal2Show.toUpperCase() + "</font>]</font></h3><br/><p align='center'>" + img + "</p>");
+                clearInterval(interval);
+            }, maxSeconds * 1000)
+        }
+
+        $("#btnPlace").click(() => {
+            myTimeOut();
+        })
+    </script>
+</body>
+
+</html>
