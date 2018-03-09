@@ -1,1 +1,3 @@
-# Unclassified Projects (No Need to)
+# Unclassified Projects
+
+## Projects with Explanation in French (mostly)
