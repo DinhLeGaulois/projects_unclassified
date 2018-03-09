@@ -10,17 +10,17 @@
 
 ## List des programmes:
 
-> 1) "**Calculatrice**" ([code source](https://github.com/DinhLeGaulois/calculator_react_redux))
+> 1) "**Calculatrice**" ([code source](https://github.com/DinhLeGaulois/projects_unclassified/tree/master/friends_French_speaking/React_Redux/Calculatrice))
 > Juste une basique calculatrice faisant 4 opérations arithméthiques. Cela dit, c'est un projet très intéressant pour pratiquer l'architecture de **React/Redux**.
 
-> 2) "**Activités**" ([code source](https://github.com/DinhLeGaulois/activities_react_redux))
+> 2) "**Activités**" ([code source](https://github.com/DinhLeGaulois/projects_without_db/tree/master/projects_with_react/activities_react_redux))
 > J'ai mis le calcul d'**Indice Masse Corporelle** (**BMI**) et la requête de données à la bibliothèque du congrès (accès libre) ensemble. Pourtant les deux parties sont complètement indépendantes l'un de l'autre. Je vais les faire apparaître par ces cliques des boutons ("tab" ou "link") corespondants.
 
-> 3) "**Ajouter un peu de couleurs**" ([code source](https://github.com/DinhLeGaulois/colors_react_redux))
-> Cette application n'a d'intérêt que pour apprendre l'architecture **React/Redux** (puisqu'avec UN seul fichier **HTML** combiné avec un peu de **jQuery**, on peut obtenir le même résultat au lieu des dizaines dans le cas présent). L'enjeu est d'avoir des mises-à-jour correctement des données affichées sous conditions. Pour chaque groupe (boutons, "div" pour l'affichage d'une couleur précise, etc.), on n'a qu'un seul composant réutilisable (**component** ou **fonction** - i.e **state** ou **stateless** selon nos besoins - dans le langage **React**).
-
-> 4) "**JavaScript - Composition de Fonctions**" ([code source](https://github.com/DinhLeGaulois/friends_French_speaking/tree/master/JavaScript%20-%20Composition%20de%20Fonctions))
+> 3) "**JavaScript - Composition de Fonctions**" ([code source](https://github.com/DinhLeGaulois/friends_French_speaking/tree/master/JavaScript%20-%20Composition%20de%20Fonctions))
 > La composition des fonctions est très intéressante et facile à faire avec JavaScript ...
+
+> 4) "**TruthOrLie**" ([code source])(https://github.com/DinhLeGaulois/projects_unclassified/tree/master/friends_French_speaking/TruthOrLie)
+> Ce n'est qu'un moyen pour pratiquer du JavaScript et jQuery en (prétendant) de faire (un peu) de la philosophie: "**l'étiquette sur la boîte ne dit pas forcément le contenu**"
 
 ---
 
